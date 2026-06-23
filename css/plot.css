@@ -1,0 +1,350 @@
+/* =========================
+   CHART CONTAINER
+========================= */
+#chart {
+  display: flex;
+  justify-content: center;
+  background: white;
+  /*padding: 40px;*/
+  border-left: 11px solid #000;
+  border-bottom: 11px solid #000;
+  border-right: 0;
+  border-top: 0;
+}
+
+/* =========================
+   MODAL ROOT
+========================= */
+
+#modal-root {
+  position: relative;
+}
+
+/* =========================
+   OVERLAY
+========================= */
+
+#modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: var(--overlay-bg);
+  z-index: 999;
+  padding: 0;
+  cursor:pointer;
+  /* IMPORTANT */
+  display: none;
+}
+
+#modal-overlay[data-open="true"] {
+  display: block; /* NOT flex */
+}
+
+/* =========================
+   OVERLAY PANEL
+========================= */
+
+.overlay__panel {
+  position: absolute;
+  width: 440px;
+  background: var(--color-surface);
+}
+
+/* Overlay Panel Shadow Triangle */
+.overlay-triangle {
+  opacity: 0;
+  clip-path: inset(0 100% 0 0);
+  transition:
+    opacity var(--overlay-triangle-enter-duration)
+      var(--overlay-triangle-enter-ease),
+    clip-path var(--overlay-triangle-enter-duration)
+      var(--overlay-triangle-enter-ease);
+}
+
+.overlay-triangle.is-visible {
+  opacity: 1;
+  clip-path: inset(0 0 0 0);
+}
+  
+  /*
+  .overlay-triangle {
+  opacity: 1 !important;
+  clip-path: none !important;
+}
+*/
+
+/* =========================
+   GRID
+========================= */
+
+.overlay__grid {
+  display: grid;
+  gap: 30px;
+  grid-template-columns: 1fr;
+  padding: var(--gap-2) var(--gap-2) 40px;
+  overflow: auto;
+}
+
+/*
+@media (max-width: 480px) {
+  #modal-overlay {
+    padding: 105px 20px 20px; /* can't remove inline styles to apply this - AW 1/24/26 @ 9:43am 
+  }
+  .overlay__grid {
+    display: grid;
+    gap: 30px;
+    grid-template-columns: 1fr; /* col2 becomes 100% 
+    padding: 20px;
+  }
+
+  .overlay__panel {
+  position: relative;
+  width: 100%;
+  /*width: min(1200px, 100%);
+  overflow: auto;
+  background: var(--surface);
+  }
+  .modal-overlay {
+    padding: 10px;
+    top: 72px;
+  }
+}*/
+
+/* Close button (optional) */
+
+.overlay-outer-close-container {
+  position: absolute; 
+  top: 1.25rem; 
+  right: 1.875rem; 
+  cursor: pointer;
+}
+.overlay__close {
+  position: sticky;
+  top: 0;
+  display: flex;
+  justify-content: flex-end;
+  padding: var(--gap-2) var(--gap-3) 0;
+}
+
+/* CLOSE OVERLAY BUTTON */
+a.close-btn {
+  font-size: 1.5rem;
+  text-decoration: none;
+  color: #6B1F35;
+}
+
+
+
+/* Modal title */
+
+/* Modal text */
+dt {
+  margin: 4px 0;
+}
+
+dt[data-icon] {
+  font-weight: 300;
+}
+
+dd {
+  padding: 0 0 10px 0;
+  margin: 0;
+  line-height: 1.5rem;
+  letter-spacing: 0.06px;
+  font-weight: 300;
+  font-size: 0.9375rem;
+ }
+
+dd.scroll-notes {
+  height: 120px;
+  overflow: scroll;
+}
+
+ dl {
+  margin-bottom: 0;
+ }
+
+
+/* =========================
+   SCATTER PLOT STYLES
+========================= */
+
+/* Turn ALL Plot text white */
+svg.plot-d6a7b5 {
+  color: white !important;
+}
+
+svg.plot-d6a7b5 g[aria-label="y-axis tick label"] {
+  display: none;
+}
+
+.chart-container {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-rows: 1fr auto;
+  gap: 12px;
+}
+
+.y-axis-labels {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  font-family: Inter, system-ui, sans-serif;
+  font-weight: 500;
+}
+
+.y-axis-labels span:nth-child(even) {
+  visibility: hidden;
+}
+
+#chart {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.x-axis-label {
+  grid-column: 2;
+  grid-row: 2;
+  text-align: right;
+}
+
+/* Hover state for scatterplot dots — SVG-safe */
+#chart svg circle {
+  transition: opacity 120ms ease;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+#chart svg circle:hover {
+  opacity: 0.75;
+}
+
+.plot-dot {
+  r: auto;
+}
+
+/* Y-axis tick labels */
+.plot text[aria-label="y-axis tick label"] {
+  font-size: 12px;
+  font-family: Inter, system-ui, sans-serif;
+  fill: #fff;
+  display: none;
+}
+
+/* Y-axis title */
+.plot text[aria-label="y-axis label"] {
+  font-size: 13px;
+  font-weight: 500;
+  opacity: 0;
+}
+
+/* =========================
+   CHART BOTTOM TEXT
+========================= */
+
+#chart-title {
+    /*position: absolute;
+    bottom: 45px;
+    right: 45px;*/
+  font: 500 1em "Inter", sans-serif;
+  font-style: italic;
+}
+
+#chart-desc {
+  /*position: absolute;
+  bottom: 45px;
+  left: 45px;*/
+  font: 400 13px "Inter", sans-serif;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  counter-reset: item;
+}
+
+#chart-desc ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  display: grid;
+  row-gap: 0.5rem;
+}
+
+#chart-desc li {
+  color: var(--color-secondary);
+  display: grid;
+  grid-template-columns: 1.25em auto;
+  column-gap: 0.5rem;
+  align-items: center;
+}
+
+#chart-desc li span.legend-icon:last-child {
+  font-size: 20px;
+}
+
+.chart-legend dl {
+  margin: 0;
+}
+
+.chart-legend dt {
+  position: relative;
+  padding-left: 1.5rem;
+  color: var(--text-muted, #999);
+}
+
+.chart-legend dt::before {
+  content: attr(data-icon);
+  position: absolute;
+  left: 0;
+  opacity: 0.6;
+}
+
+.caption {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-style: italic;
+  color: var(--color-secondary);
+}
+
+
+/* =========================
+   PLOT SECTION
+========================= */
+.plot-figure {
+  margin: 0;
+  display: grid;
+  gap: var(--gap-3);
+}
+
+.plot-bottom {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--gap-3);
+  font-size: 0.875rem;
+  font-weight: 200;
+  width: 100%;
+}
+
+.plot-bottom div:first-child {
+  align-items: start;
+}
+
+.plot-bottom div:last-child {
+  align-self: end;
+  text-align: right;
+}
+
+
+@media (max-width: 480px) {
+  .overlay__panel { 
+    width: 90vw;
+  }
+  .plot-bottom { 
+    margin-top: 30px;
+    align-items: center;
+  }
+  .plot-bottom h2 {
+    font-weight: 300;
+    font-size: 18px;
+  }
+}

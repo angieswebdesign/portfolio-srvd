@@ -1,0 +1,534 @@
+/* =========================
+   TOKENS
+========================= */
+:root {
+
+  /* Stage Definitions */
+  --header-height: 125px;        /* AWD sticky header height */
+  --frame-thickness: calc(var(--frame-pad) * 2); 
+  --stage-height: calc(
+    100svh
+    - var(--header-height)
+    - var(--frame-thickness)
+  );
+
+    /* Overlay */
+  --overlay-bg: rgba(42, 41, 41, 0.8);
+  --overlay-triangle-bg: rgba(0, 0, 0, 0.35);
+  --overlay-pad: 20px;
+  --overlay-col2-min: 450px;
+
+  /* Overlay animation */
+  --overlay-triangle-enter-duration: 140ms;
+  --overlay-triangle-enter-ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --overlay-panel-enter-delay: 140ms;
+  --overlay-panel-enter-duration: 180ms;
+}
+
+ 
+
+
+/* =========================
+   BASE
+========================= */
+/* resets, primitives */
+
+* { box-sizing: border-box; }
+
+/* html, body { min-height: 100vh; overflow: hidden; } This causes mobile to lock after scrolling */
+
+html, body {
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+
+body.long-page {
+  overflow: auto;
+}
+
+body {
+  margin: 0;
+  background: transparent;      /* black frame */
+  padding: var(--frame-pad);     /* fixed 20px frame */
+  font-family: var(--font-sans);
+  color: var(--text);
+  box-sizing: border-box;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+/* Fixed viewport frame */
+    .frame {
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+
+      box-sizing: border-box;
+      border: var(--frame-pad) solid var(--color-accent);
+      background: transparent;
+
+      pointer-events: none;
+      z-index: 99;
+    }
+
+
+
+
+
+img, svg { max-width: 100%; height: auto; display: block; }
+
+/* The website lives inside the frame */
+.site {
+  background: var(--surface);
+  padding: 0 var(--gap-4);
+}
+
+/* Centering container that stays fluid */
+.container {
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding: var(--gap-3);
+}
+
+.section > .container {
+  min-height: 100%;
+  display: grid;
+  place-items: center;
+  padding: clamp(2rem, 4vw, 6rem);
+}
+
+.visually-hidden {
+  visibility: hidden;
+  display: none;
+}
+
+
+
+
+
+/* ==========================
+   LAYOUT
+========================== */
+
+.layout-section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  width: 100%;
+  padding-bottom: 10px;
+}
+
+
+
+
+/* =========================
+   PADDING & ALIGNMENT
+========================= */
+.pad {
+  padding: var(--gap-3);
+}
+.pad-lg {
+  padding: var(--gap-4);
+}
+
+.pad-vt {
+  padding-top: var(--gap-4);
+  padding-bottom: var(--gap-4);
+}
+
+.pad-about {
+  padding: var(--gap-3) 150px; 
+}
+
+.align-right {
+  margin-left: auto;
+  text-align: right;
+}
+
+.align-center {
+  margin-inline: auto;
+  text-align: center;
+}
+
+
+/* =========================
+   INTERACTION STATES
+========================= */
+.content-rail {
+  will-change: transform;
+}
+
+#content-rail[data-locked="true"] {
+  overflow: hidden;
+  pointer-events: none;
+}
+
+
+/* =========================
+   LONG PAGE SECTIONS
+========================= */
+.page-main {
+  display: grid;
+  gap: 0;
+}
+
+
+.section {
+  min-height: var(--stage-height);
+  height: var(--stage-height);
+  padding: 0;
+  margin: 0;
+}
+
+
+
+
+
+/* =========================
+   HEADING PATTERN
+========================= */
+
+/* Section heading wrapper */
+
+/* initial heading pattern created 3/6/26
+.section-heading {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+
+.heading-main {
+  font-family: var(--font-sans);
+  font-weight: 900;
+  line-height: var(--lh-tight);
+  letter-spacing: var(--ls-tight);
+  text-transform: uppercase;
+  color: var(--color-primary);
+}
+
+.heading-accent {
+  font-family: var(--font-serif-text);
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: var(--ls-script);
+  color: #ff4f87;
+  margin-top: -16px;
+}
+  */
+
+/* updated heading component 3/8/26 */
+
+.section-heading {
+  margin: 0;
+  line-height: var(--lh-tight);
+  display: flex;
+  flex-direction: column;
+}
+
+.heading-main {
+  display: block;
+  font-family: var(--font-sans);
+  font-weight: 900;
+  letter-spacing: var(--ls-tight);
+  text-transform: uppercase;
+  color: var(--color-text);
+  font-size: var(--heading-main-size);
+}
+
+.heading-accent {
+  display: block;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  color: var(--color-accent);
+  letter-spacing: var(--ls-script);
+  font-size: var(--heading-accent-size);
+}
+
+.subtitle {
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 1.375rem;
+}
+
+  .overlay-panel {
+    --heading-main-size: 2rem;
+    --heading-accent-size: 1.875rem;
+  }
+
+  .overlay-panel .heading-accent {
+    margin-top: -7px;
+  }
+
+/* Scale Modifiers */
+
+.heading--display .heading-main {
+  font-size: var(--type-display);
+}
+
+.heading--display .heading-accent {
+  font-size: calc(var(--type-display) * 0.85);
+  margin-top: -8px;
+}
+
+.heading--h1 .heading-main {
+  font-size: var(--type-h1);
+}
+
+.heading--h1 .heading-accent {
+  font-size: calc(var(--type-h1) * 0.85);
+  margin-top: -12px;
+}
+
+.heading--h2 .heading-main {
+  font-size: var(--type-h2);
+}
+
+.heading--h2 .heading-accent {
+  font-size: calc(var(--type-h2) * 0.85);
+  margin-top: -8px;
+}
+
+
+
+/* =========================
+   WORK SECTION
+========================= */
+.projects-wrapper {
+  width: 100%;
+}
+
+#project-list {
+  height: 560px;
+  overflow: scroll;
+}
+
+
+/* move to components.css - AW 3/8/26 */
+article.project-card {
+  display: flex;
+  gap: 2rem;
+  flex-direction: row;
+  align-items: flex-end;
+  min-width: 0; /* important in flex layouts */
+  border-bottom: 1px solid #F2F2F2;
+  box-sizing: border-box;
+  padding: 20px 0;
+}
+
+.project-card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 1;
+  min-width: 0;
+}
+
+article.project-card p {
+  margin: 0;
+}
+
+article.project-card img {
+  width: 300px;
+  height: 200px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+
+/* =========================
+   SERVICES SECTION
+========================= */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--gap-3);
+  align-items: stretch;
+  width: 100%;
+}
+
+.card {
+  padding: var(--gap-3) 0;
+}
+
+
+/* =========================
+   ABOUT SECTION
+========================= */
+
+.media {
+  display: grid;
+  grid-template-columns: minmax(180px, 1fr) 2fr;
+  gap: var(--gap-3);
+  align-items: start;
+}
+
+.about p {
+  margin: 0.875rem 0 1.5rem 0;
+}
+
+.about-footer {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: var(--gap-3);
+  width: 100%;
+}
+
+.about-me {
+  flex-direction: row;
+  align-items: end;
+}
+
+.about-me .heading-accent {
+  line-height: 30px;
+}
+
+/* =========================
+   MEDIA QUERIES
+   -- move to a token (ChatGPT: CSS Media Query Nesting) --
+========================= */
+
+/* Desktop-only scroll locking */
+@media (hover: hover) and (pointer: fine) {
+  html, body {
+    overflow: hidden;
+  }
+}
+
+@media (max-width: 1180px) {
+  /* tablet styles */
+  #project-list {
+  height: 450px;
+  }
+  #chart svg {
+    width: 700px;
+  }
+}
+
+@media (min-width: 769px) {
+  .media.about {
+    align-items: center;
+    width: auto;
+  }
+}
+
+@media (max-width: 768px) {
+    #project-list {
+    overflow-y: auto;
+    overflow-x: hidden;
+    margin-inline: auto;
+    max-width: 340px;
+    height: 600px;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Mobile Behavior for System Headings (Proportional scale) */
+  :root {
+    --frame-pad: 12px;
+    --type-display: 42px;
+    --type-h1: 36px;
+    --type-h2: 28px;
+    --type-body-lg: 20px;
+  }
+
+  /* The website lives inside the frame */
+  .site {
+    padding: 0;
+  }
+
+  h2 {
+    font-size: 2.3rem;
+    line-height: 40px;
+  }
+
+  /* Global Nav */
+  .global-header .header-inner {
+    flex-direction: column;
+    align-items: center;
+  }
+  .designer-name {
+    flex-direction: row;
+    gap: 8px;
+  }
+  .global-nav__list {
+    justify-content: center;
+  }
+
+  /* page.html (main page w/ 3 sections */
+  .media { grid-template-columns: 1fr; }
+  .about-footer { justify-content: center; }
+  .pad-about { padding:0; }
+  .cards { grid-template-columns: 1fr; }
+
+  #project-list {
+    overflow-y: auto;
+    overflow-x: hidden;
+    margin-inline: auto;
+    max-width: 340px;
+    height: 600px;
+  }
+
+  article.project-card {
+    flex-direction: column;
+    align-items: start;
+    padding: 0 0 20px;
+    gap: 1.2rem;
+  }
+  article.project-card img {
+    width: 100%;
+  }
+  .logotext {
+    font-size: 1rem;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .section header h2 {
+    font-size: 1.875rem;
+  }
+  .section header p {
+    display: none;
+  }
+  .section .container .about {
+    padding: 0;
+  }
+  .section .container .about img {
+    margin: 0 auto;
+    max-width: 70%;
+  }
+  .section .container .about p:last-child {
+    display: none;
+  }
+  .section .container .about article {
+    height: 275px;
+    overflow: scroll;
+  }
+  .section .container .cards {
+    gap: 0;
+  }
+  .section .container .cards .card {
+    padding-bottom: 0;
+  }
+  .section .container .cards .card h3 {
+    font-size: 1.375rem;
+    padding-bottom: 8px;
+    margin-bottom: 8px;
+  }
+  article.project-card {
+    padding: 0 0 40px;
+    gap: 1rem;
+  }
+  
+}
+
+
+
+  
+

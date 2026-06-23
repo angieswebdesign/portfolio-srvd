@@ -1,0 +1,637 @@
+/* =========================
+   TOKENS
+========================= */
+/* Phase 1, Layer 3 overlay */
+.layer-3 {
+  /* ========================= */
+  /* Typography Tokens */
+  /* ========================= */
+
+  /*--cs-font-h4: 1.375rem;        /* 22px */
+  --cs-font-tagline: 1.375rem;   /* 22px */
+  --cs-font-reflection: 1.25rem; /* 20px */
+
+  --cs-line-body: 1.5;           /* ~21–24px depending on size */
+  --cs-line-tagline: 25px;
+  --cs-line-reflection: 32px;
+
+  /* Spacing */
+  --cs-space-component: 10px;
+
+
+
+
+  /* ========================= */
+  /* Media Tokens */
+  /* ========================= */
+
+  --cs-img-ratio: 4 / 3;
+  --cs-img-thumb-w: 200px;
+  --cs-img-thumb-h: 150px;
+
+}
+
+
+
+
+/* ======================================================
+   LAYER 3 — CASE STUDY OVERLAY 
+   Do not refactor existing styles above this line
+====================================================== */
+
+.layer-3-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: none;
+}
+
+.layer-3-overlay.is-open {
+  display: block;
+}
+
+/* Frame */
+.layer-3-frame {
+  position: fixed;
+  inset: 0;
+  background: var(--color-case-study-frame);
+}
+
+/* Close button */
+.layer-3-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  padding: 20px;
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+/* Watermark */
+.layer-3-watermark {
+  position: absolute;
+  right: 2rem;
+  bottom: 2rem;
+  opacity: 1;
+  pointer-events: none;
+}
+
+
+
+/* ================================
+   Layer 3 stage content (1. header, 2. main, 3. footer)
+================================ */
+
+.case-header,
+.case-footer {
+  display: block;
+}
+
+
+
+/* ---------- Page Layout: Parent <main> container ---------- */
+.layer-3 header {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.layer-3 main.case-body {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  padding-inline: 40px;
+}
+
+.layer-3 main.case-body > section.case-section:not(.case-overview) {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.layer-3 .section-stack {
+  display: grid;
+  gap: 50px;
+}
+
+
+
+/* ---------- Main Layout: Child <section> containers ---------- */
+
+/*.layer-3 section.case-section {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}*/
+
+/* ================================
+   Layer 3 Behavior Hooks (desktop vs responsive) (content visibility)
+================================ */
+
+/* Summary / Description */
+.layer-3 [data-summary],
+.layer-3 [data-description] {
+  font-size: var(--cs-font-body);
+  line-height: var(--cs-line-body);
+}
+
+.layer-3 [data-summary] {
+  display: block;
+}
+
+.layer-3 [data-description] {
+  display: block;
+}
+
+
+
+/* ================================
+   Layer 3 Typography 
+================================ */
+
+/* Heading Pattern Page Override */
+
+.layer-3 {
+  --heading-main-size: 3rem;
+  --heading-accent-size: 2.8rem; /* previous: 2.125 */
+}
+
+/* ---------- 'CASE STUDY' subtitle ---------- */
+.layer-3 .cs-eyebrow {
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 1.2rem;
+}
+
+/* ---------- Base section heading styles ---------- */
+.layer-3 .section-header * {
+  font-family: var(--font-sans);
+  color: #000;
+  text-transform: uppercase;
+  
+  padding: 8px 0;
+  margin-bottom: 0.5rem;
+  
+  /* override the font size and underline as needed */
+  border-bottom: 1px solid #000;
+  font-size: 22px;
+}
+
+.layer-3 .list-summary {
+  font-size: 18px;
+}
+
+.copyright {
+  font-size: 12px;
+  color: #868686;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+/* ================================
+  Structural Case Study Section Blocks
+================================== */
+
+/* 'Overview' section repeats as 1st block in every case study. -- NOT A PATTERN -- */
+.layer-3 .case-overview {
+  display: grid;
+  grid-template-columns: 5fr 4fr;
+  gap: 24px;
+}
+.layer-3 .case-overview .section-header h2 {
+  font-size: 26px;
+}
+/* Aside in the Overview section. -- NOT A PATTERN -- */
+.layer-3 .component-summary {
+
+  background-color: #f2f2f2;
+  padding: 30px;
+
+  h3 {
+    font-size: 22px;
+    border: 0;
+    text-align: center;
+  }
+
+  dl { 
+    display: grid;
+    grid-template-columns: auto 1fr;
+    row-gap: 10px;
+    column-gap: 24px;
+  }
+
+  dt {
+    text-transform: capitalize;
+  }
+
+  span {
+    font-weight: 600;
+  }
+}
+
+/* ================================
+   Components v1 - 2/28/26
+================================ */
+
+/* ---------- Lists ---------- */
+
+.layer-3 li {
+  max-width: 60ch; /* character-limit guardrail */
+  padding-bottom: 10px;
+  font-weight: 300;
+}
+
+.layer-3 .list {
+  margin: 0;
+  padding-left: 16px;
+  margin-block: var(--cs-space-component);
+}
+
+.layer-3 .list--bullet {
+  list-style: disc;
+}
+
+.layer-3 .list--check {
+  list-style: none;
+  padding-left: 0;
+}
+
+.layer-3 .list--check li {
+  position: relative;
+  padding-left: 28px;
+}
+
+.layer-3 .list--check li::before {
+  content: "\2713";
+  position: absolute;
+  left: 0;
+  font-size: 20px;
+  color: var(--color-accent);
+}
+
+.list__title {
+  font-style: italic;
+  font-size: 18px;
+  font-weight: 300;
+  margin-bottom: 8px;
+  text-transform: capitalize;
+  border: 0;
+}
+
+.list__items {
+  padding-left: 1rem;
+  margin:0;
+}
+
+/* ---------- Slideshow ---------- */
+
+.layer-3 .component-slideshow {
+  height: 400px;
+  display: flex;
+  gap: 16px;
+  background: #F2F2F2;
+
+  padding: 10px;
+  margin: 0;
+  overflow-x: scroll;
+}
+
+.layer-3 .component-slideshow .slide {
+  flex: 0 0 auto;
+  height: 100%;
+  overflow: hidden;
+
+  box-shadow: 0 1px 1px rgba(0,0,0,0.15);
+  /*aspect-ratio: 4 / 3;*/
+
+}
+
+.layer-3 .component-slideshow .slide img {
+  width: auto;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.layer-3 .component-slideshow .caption {
+  font-size: 12px;
+  text-transform: uppercase;
+  text-align: right;
+}
+
+
+/* ================================
+   Components v2 - 3/9/26
+================================ */
+
+/* ---------- Intro Pattern ---------- */
+
+.layer-3 .pattern-intro .intro-layout {
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+}
+
+/* Thumbnail container */
+.layer-3 .pattern-intro .intro-thumb {
+  flex: 0 0 var(--cs-img-thumb-w);
+  display: none;
+}
+
+/* Thumbnail image */
+.layer-3 .pattern-intro .intro-thumb img {
+  width: 100%;
+  height: var(--cs-img-thumb-h);
+  aspect-ratio: var(--cs-img-ratio);
+  object-fit: cover;
+}
+
+/* State: thumbnail enabled */
+.layer-3 .pattern-intro.thumb .intro-thumb {
+  display: block;
+}
+
+/* Paragraph expands naturally */
+.layer-3 .pattern-intro .intro-layout p {
+  flex: 1;
+}
+
+/* ---------- Result Blockquote ---------- */
+.component-blockquote {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  column-gap: 24px;
+  align-items: center;
+  margin: 0;
+}
+.component-blockquote p {
+  border-left: 8px solid var(--color-accent);
+  padding-left: 16px;
+  margin: 0;
+}
+.layer-3 .result {
+  margin-left: auto;
+  width: 50%;
+}
+.layer-3 .result-label {
+  text-transform: uppercase;
+  font-weight: bold;
+  font-style: italic;
+}
+
+
+/* ---------- Hero Blockquote ---------- */
+/* TODO: combine both blockquotes and make label optional */
+.pattern-callout--hero {
+  position: relative;
+  padding-left: 20px;
+  margin: 32px;
+  font-size: 1.25rem;
+  line-height: 1.5;
+  font-style: italic;
+}
+.layer-3 .pattern-callout--hero::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.2em;
+  bottom: 0.2em;
+  width: 8px;
+  background: var(--color-accent);
+  border-radius: 2px;
+}
+
+
+/* ---------- Slideshow ---------- *
+.layer-3 .component-slideshow {
+  display: grid;
+  grid-template-columns: 2fr 2fr 1fr;
+  gap: 16px;
+}*/
+
+/* ---------- Reflection statement ---------- */
+.layer-3 .pattern-reflection {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.layer-3 .pattern-reflection p {
+  font-family: var(--font-sans);
+  font-size: 20px;
+  font-weight: 300;
+  line-height: 32px;
+  color: var(--color-text-primary);
+}
+
+/* ---------- Frame watermark ---------- */
+.layer-3-watermark {
+  position: absolute;
+  right: 1.5rem;
+  bottom: 1.5rem;
+}
+
+
+
+
+/* ================================
+   Layer 3 scrolling (CRITICAL)
+================================ */
+
+/* Scrollbar (stage only) 
+Note: Decided to disable and implement scrollbar in a later phase (aw 3/5/26)
+.layer-3-stage::-webkit-scrollbar {
+  width: 18px;
+  background-color: #dbdbdb;
+}
+  */
+
+.layer-3-stage::-webkit-scrollbar-thumb {
+  background: var(--color-control);
+}
+
+.layer-3-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: auto;
+}
+
+.layer-3-frame {
+  position: fixed;
+  inset: 0;
+  pointer-events: none; /* frame should NOT capture scroll */
+}
+
+
+.layer-3-stage {
+  position: fixed;
+  inset: 0;
+  margin: auto;
+  width: 80vw;
+  height: 80vh;
+  max-width: 1100px;
+  background: #fff;
+  overflow-y: auto;     /* ✅ THIS enables scrolling */
+  overflow-x: hidden;   
+
+  pointer-events: auto; /* ✅ THIS receives wheel/touch */
+
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Section stacking rules */
+.layer-3-stage {
+  display: flex;
+  flex-direction: column;
+}
+
+article.layer-3 {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+/* ================================
+   Inputs
+================================ */
+
+/* Desktop Scrollbar Phase III Implementation (commented out) 
+Author: AW 3/5/26
+Notes: Audit above scrollbar styles before implementing below scrollbar styles
+
+/* Layer 3 Scrollbar *
+  /* -- windows -- *
+#project-list::-webkit-scrollbar {
+  width: 18px;
+}
+
+#project-list::-webkit-scrollbar-track {
+  background: var(--color-secondary);
+}
+
+#project-list::-webkit-scrollbar-thumb {
+  background: var(--color-control);
+  border-radius: 9px;
+  border: 4px solid var(--color-secondary);
+}
+  /* -- firefox order: 0-thumb, 1-track -- *
+#project-list {
+  scrollbar-width: auto;
+  scrollbar-color: var(--color-control) var(--color-secondary);
+}
+  */
+
+/* ================================
+   Layer 3 scroll lock (additive)
+================================ */
+
+body.is-layer-3-open {
+  overflow: hidden;
+}
+
+.layer-3-close {
+  pointer-events: auto;
+}
+
+.layer-3 .section-heading {
+  flex-direction: row;
+  align-items: baseline;
+  text-align: center;
+  justify-content: center;
+}
+
+/* ================================
+   Responsive Media Queries
+================================ */
+
+
+@media (min-width: 990px) {
+
+  .layer-3-stage {
+    width: 80vw;
+    min-width: 990px;
+  }
+
+}
+
+@media (max-width: 768px) {
+
+  .layer-3 .pattern-intro .intro-layout {
+    flex-direction: column;
+  }
+
+  .layer-3 .pattern-intro .intro-thumb {
+    width: 100%;
+  }
+
+}
+
+@media (max-width: 480px) {
+  article.layer-3 {
+    gap:10px;
+  }
+
+ .layer-3-stage {
+    width: 100%;
+  }
+  
+.layer-3 {
+  & main.case-body {
+    gap: 50px;
+  }
+  & section {
+  padding: 0;
+  }
+  & section:not(:first-of-type) {
+    padding: 0;
+  }
+  & header img {
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  height: 300px;
+ }
+  & .section-heading {
+  flex-direction: column;
+  align-items: center;
+ }
+ & .section-heading .heading-accent {
+  margin: -10px 0 4px;
+ }
+ & .case-overview {
+  display: flex;
+  flex-direction: column;
+ }
+ & .overview-content h2 {
+  text-align: center;
+ }
+ & .pattern-intro .intro-thumb {
+    display: none;
+  }
+ & .section-header:not(:first-of-type) {
+  font-size: 28px;
+ }
+ & .pattern-callout--hero {
+  font-size: 1.2rem;
+  margin: 0;
+ }
+ & .result {
+  width: 100%;
+ }
+}
+
+
+/* ======================================================
+  MOBILE OVERRIDE — DO NOT REMOVE
+  Desktop frame model intentionally disabled on mobile.
+  Prevents section overlap when desktop frame model is active
+  Do not remove without re-testing section stacking.
+====================================================== */
+.section,
+  .snap-section {
+    height: auto !important;
+    min-height: 100svh;
+    overflow: visible;
+  }
+}

@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ANGELA WALLACE // SR VISUAL DESIGNER</title>
+    <!-- "Inter" Google Font -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://use.typekit.net/dej8pod.css">
+        <link rel="stylesheet" href="css/tokens.css" />
+        <link rel="stylesheet" href="css/styles.css" />
+        <link rel="stylesheet" href="css/intro.css" />
+    </head>
+    <body>
+        <div id="frame" class="frame" aria-hidden="true"></div>
+        <main class="intro-stage">
+            
+            <!-- Container 1 -->
+            <div class="intro-top">
+                <p class="intro-meta">ANGELA WALLACE, MFA</p>
+            </div>
+            
+            <!-- Container 2 -->
+            <div class="intro-middle">
+                <h1 class="intro-title" aria-label="Product Designer Systems focused">  
+                    <span class="stack-group">
+                        <span class="stack">VIS</span>
+                        <span class="stack">UAL</span>
+                    </span>
+                    <span class="stack-group">
+                        <span class="stack">DESIG</span>
+                        <span class="stack">NER</span>
+                    </span>
+
+                    <span class="accent-stack">Systems</span>
+                    <span class="accent-stack">focused</span>
+                </h1>
+                
+                <p class="intro-description">
+                    Senior VD focused on scalable UI, design systems, and developer collaboration.
+                </p>
+                
+                <a class="primary-btn intro__cta" href="work.html">View work</a>
+            </div>
+            
+            <!-- Container 3 -->
+            <div class="intro-bottom">
+                <div class="intro-mark">
+                    <img
+                    src="/assets/awd-logo.svg"
+                    alt="Angela Wallace Design logo"
+                    class="intro__logo"
+                    />
+                </div>
+            </div>
+            
+        </main>
+        <script>
+            window.addEventListener("load", () => {
+                const accent = document.querySelector(".title-accent");
+                requestAnimationFrame(() => {
+                    accent.classList.add("is-visible");
+                });
+            });
+        </script>
+    </body>
+    </html>

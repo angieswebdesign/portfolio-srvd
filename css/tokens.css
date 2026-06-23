@@ -1,0 +1,71 @@
+
+:root {
+  
+/* =========================
+   TYPOGRAPHY
+========================= */
+  
+  /* Font families */
+  --font-sans: Inter, system-ui, sans-serif;
+  --font-serif: "DM Serif Display", Georgia, serif;
+  --font-serif-text: "DM Serif Text", serif; /* Scope: font-weight: regular(400); font-style: normal, italic; (Added by AW 030226 @2:40pm) */
+
+  /* ===== TYPE SCALE ===== */
+  --type-hero: 93px;
+  --type-hero-accent: 80px;
+
+  --type-display: 64px;
+  --type-h1: 48px;
+  --type-h2: 36px;
+  --type-h3: 28px;
+  --type-body-lg: 22px;
+  --type-body: 16px;
+  --type-small: 14px;
+
+  /* line heights */
+  --lh-tight: 0.85;
+  --lh-normal: 1.25;
+  --lh-body: 1.5;
+  
+  /* letter spacing */
+  --ls-tight: -0.02em;
+  --ls-script: -0.04em;
+
+    /* Breakpoint */
+  --bp-stack: 480px;
+
+
+/* =========================
+   COLOR
+========================= */
+
+  /* Frame + surfaces */
+  --color-frame: #000;
+  --color-case-study-frame: #313131;
+  --color-surface: #fff;
+  --color-text: #111;
+
+  /* Brand */
+  --color-primary: #000;  /* Core brand / text */
+  --color-secondary: #C3C3C3;  /* Neutral surfaces, dividers */
+  --color-accent:  #FA4D7E;  /* Emphasis / highlights */
+  --color-divider: #D9D9D9;
+
+  /* Interaction */
+  --color-focus:  #D7154D;  /* Focus rings, active states */
+  --color-control: #23CDCD;  /* Controls, affordances */
+
+/* =========================
+   LAYOUT
+========================= */
+  --frame-pad: 20px;
+  --container-max: 1100px;
+  --gap-1: 12px;
+  --gap-2: 20px;
+  --gap-3: 30px;
+  --gap-4: 50px;
+  --gap-5: 200px;
+  --half-width: 50%;  
+
+  --header-min: 64px;
+}

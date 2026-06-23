@@ -1,0 +1,847 @@
+/* main.css */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Fonts */
+
+/* <weight>: Use a value from 100 to 900
+// <uniquifier>: Use a unique and descriptive class name */
+.montserrat-600 {
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+}
+
+.montserrat-200 {
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 200;
+  font-style: normal;
+}
+
+.oooh-baby-regular {
+  font-family: "Oooh Baby", cursive;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 2rem;
+  color: #;
+}
+
+.inter-tight-900, .inter-tight-600, .inter-tight-300, .inter-tight-100 {
+  font-family: "Inter Tight", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+
+.inter-tight-900 {
+  font-weight: 900;
+}
+
+.inter-tight-600 {
+  font-weight: 600;
+}
+
+.inter-tight-400 {
+  font-weight: 400;
+}
+
+.inter-tight-300 {
+  font-weight: 300;
+}
+
+.inter-tight-100 {
+  font-weight: 100;
+}
+
+.ital {
+  font-style: italic;
+}
+
+body {
+  font-family: "Inter Tight", sans-serif;
+  font-weight: 300;
+  margin: 0;
+  padding: 1rem;
+  background: #fff;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* Typography Reset */
+h1, h2, h3, h4, p, ul {
+  margin: 0;
+  padding: 0;
+}
+
+h2 {
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #999;
+}
+
+
+
+
+
+/******** Header ********/
+header {
+  display: flex;
+  justify-content: space-between;
+  padding: 2rem 5% 0;
+}
+
+header h1 {
+  font-size: 2.5rem;
+  text-transform: uppercase;
+}
+
+header h1 span {
+  font-size: 1.4rem;
+  font-weight: 200;
+  font-style: italic;
+  color: #333;
+}
+
+header p {
+  font-size: 1.5rem;
+  color: #666;
+}
+
+/* Shared Styles */
+.gallery ul li {
+  display: inline;
+  list-style: none;
+  padding: 0;
+  margin-top: 0.5rem;
+}
+
+.gallery img {
+  width: 3rem;
+  height: 3rem;
+}
+
+.scale-image {
+  background-color: #ccc;
+  height: auto;
+}
+
+
+/***** Company Logos ***** Delete if like above gallery */
+.logo-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.logo-grid img {
+  max-height: 70px;
+  object-fit: contain;
+  flex: 0 1 100px;
+  filter: grayscale(100%);
+  opacity: 0.85;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+.logo-grid img.descale {
+  max-height: 30px;
+}
+.logo-grid img.upscale {
+  max-height: 90px;
+}
+.logo-grid img:hover {
+  transform: translateY(-5px) scale(1.03);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+}
+
+
+
+/***** Contact Card *****/
+
+#contact-card {
+  background: #555;
+  color: #fff;
+  padding: 1rem;
+  text-align: center;
+  border-radius: 0.25rem;
+  width: 12.5rem;
+}
+
+.contact-icons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#contact-card img {
+  width: 2rem;
+  height: 2rem;
+  margin: 0.25rem;
+  margin-right: 0.5rem;
+}
+
+#contact-card .placeholder-medium {
+  width: 3.125rem;
+  height: 3.125rem;
+}
+
+#contact-card a {
+  color: #fff;
+  font-weight: 500;
+  text-decoration: underline;
+  font-size: 0.875rem;
+}
+
+/******** Headshot ********/
+
+/******** Sticky Nav ********/
+#sticky-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: none;
+  z-index: 1000;
+  padding: 0.5rem 5%;
+  font-size: 0.85rem;
+  background: #f4f4f4;
+  border-bottom: 1px solid #ddd;
+}
+
+#sticky-nav.show {
+  display: flex;
+  justify-content: space-between;
+}
+
+#sticky-nav ul {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+}
+
+#sticky-nav a {
+  text-decoration: none;
+  color: #444;
+}
+
+#sticky-nav .inactive {
+  color: #ddd;
+}
+
+/******** Summary ********/
+.summary {
+  padding: 0 5% 2rem 10%;
+  margin-left: 15%;
+  text-align: right;
+}
+
+.summary p {
+  font-weight: 300;
+  margin: 0.5rem 0;
+}
+
+.summary a {
+  font-weight: 500;
+  color: #333;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.headshot {
+  float: right;
+  width: 20%;
+  margin: 0 0 0 1.5rem;
+  padding-top: 8px;
+}
+
+.im-ready {
+  padding-top: .5rem;
+}
+
+
+/******** Experience Section ********/
+
+
+.experience, .client-logos {
+  padding: 2rem 5%;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.section-header h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  padding: 0;
+  width: 100%;
+} 
+
+/*--------Centered Role List ---------*/
+
+.role-list {
+  display: flex;
+  justify-content: center;
+  /*min-height: 100vh;*/
+  padding: 2rem;
+}
+
+.role-list ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  max-width: 360px; /* Limits text width for visual column */
+  text-align: left
+}
+
+.role-list li {
+  margin: 1rem 0;
+  font-size: 1.125rem;
+  line-height: 1.4;
+  word-wrap: break-word; /* Ensures long lines wrap cleanly */
+}
+
+.role-list span:first-child {
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-size: 1.5rem;
+  color: gray;
+  /*line-height: 1.4;*/
+}
+
+.role-list span.company {
+  font-weight: 300;
+  font-size: 1rem;
+  color: gray;
+  display: block;
+  /*line-height: 1.4;*/
+}
+
+.role-list a {
+  text-decoration: none;
+  color: #000;
+  font-weight: 300;
+  display: inline-block;
+  padding: 0.25rem 0.5rem;
+  transition: color 0.2s ease;
+}
+
+.role-list a:hover {
+  color: #ca005a;
+}
+
+/* Responsive full-width on small screens */
+@media (max-width: 500px) {
+  .role-list {
+    padding: 1rem;
+    align-items: flex-start;
+  }
+
+  .role-list ul {
+    max-width: 100%;
+    text-align: left;
+    padding-left: 1rem;
+  }
+
+  .role-list li {
+    font-size: 1rem;
+  }
+}
+
+
+/*------ Card/List version -------*/
+
+.view-toggle button {
+  font-family: 'Quicksand', sans-serif;
+  background: #555;
+  color: #fff;
+  border: none;
+  padding: 0.4rem 0.8rem;
+  border-radius: 0.25rem;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
+.card-view .experience-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.list-view .experience-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.list-view .experience-card {
+  background: #eee;
+  padding: 1rem;
+  flex: 1 1 auto;
+}
+
+.card-view .experience-card {
+  background: #eee;
+  padding: 1rem;
+  flex: 1 1 calc(33.33% - 1rem);
+  /*margin-bottom: 1rem;*/
+}
+
+.card-view .experience-card:first-child {
+  flex: 1 1 calc(66.66% - 1rem);
+}
+
+.experience-card img {
+  float: left;
+  margin: 0 1rem 0.5rem 0;
+  max-height: 100px;
+  object-fit: contain;
+  flex: 0 1 100px;
+  /*opacity: 1;
+  transition: opacity 0.2s ease-in-out;
+  filter: grayscale(85%);*/
+}
+
+.experience-card h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.experience-card h4 {
+  font-size: 1rem;
+  font-weight: 400;
+  color: #555;
+}
+
+.experience-card .dates {
+  float: right;
+  font-weight: normal;
+  font-size: 0.875rem;
+  color: #777;
+}
+
+.experience-card p {
+  margin: 1rem 0;
+  clear: both;
+}
+
+.side-by-side div {
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  letter-spacing: 0.5px;
+  font-weight: 200;
+}
+
+.side-by-side a {
+  color: #000;
+  text-decoration: none;
+  transition: color 0.2s ease-in-out;
+}
+
+.side-by-side a:hover {
+  color: #ca005a;
+  transition: color 0.2s ease-in-out;
+}
+
+.dot {
+  color: #333;
+  margin: 0 0.4em;
+  font-size: 1em;
+}
+
+/******** Inquiry Form ********/
+.inquiry-form {
+  padding: 2rem 5%;
+  background: #fafafa;
+  border-top: 1px solid #ddd;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: flex-start;
+  max-width: 100%;
+}
+
+.inquiry-form form {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  gap: 1rem;
+}
+
+.inquiry-form .form-left {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  flex: 1 1 30%;
+  min-width: 200px;
+}
+
+.inquiry-form h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  width: 100%;
+}
+
+.inquiry-form input {
+  flex: 1 1 calc(33.33% - 1rem);
+  padding: 0.5rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 0;
+  font-family: 'Quicksand', sans-serif;
+}
+
+.inquiry-form textarea {
+  flex: 1 1 60%;
+  min-height: 6.25rem;
+  padding: 0.5rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 0.25rem;
+  font-family: 'Quicksand', sans-serif;
+}
+
+.inquiry-form button {
+  margin: 1.5rem 0;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 0.25rem;
+  background-color: #222;
+  color: white;
+  cursor: pointer;
+  min-width: 20%;
+}
+
+/******** Project Page ********/
+
+#project-page {
+  position: relative;
+  top: 3rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  padding: 2rem 10%;
+  gap: 1.2rem;
+}
+
+.hero {
+  display: flex;
+  align-items: flex-start;
+  background-color: #ccc;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+}
+
+.hero img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: cover;
+}
+
+.project-body {
+  display: flex;
+  justify-content: space-between;
+}
+
+.project-description p {
+  margin: 0 0 1rem;
+  text-align: justify;
+}
+
+.project-description p img {
+  float: left;
+  width: 10rem;
+  height: auto;
+  margin: 0 1rem 1rem 0;
+}
+
+.project-description .app-gallery img.app {
+  float: right; 
+  width: 250px; 
+  margin-left: 20px;
+  cursor:pointer;
+}
+
+/***** Lightbox Gallery *****/
+
+.lightbox {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.9);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Hide by default */
+.hidden {
+  display: none !important;
+}
+
+/* Image Styling */
+.lightbox-img {
+  max-width: 90%;
+  max-height: 90%;
+  margin-bottom: 1rem;
+}
+
+/* Navigation Controls */
+.lightbox-controls {
+  display: flex;
+  gap: 1rem;
+}
+
+.lightbox-controls button {
+  background: none;
+  border: 2px solid white;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+}
+
+.lightbox-controls button:hover {
+ color:#ca005a;
+}
+
+/***** Design Process + Workflow *****
+
+.process-workflow {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.process-workflow .side-by-side {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.95rem;
+  gap: 1rem;
+}
+
+.process-workflow .gallery {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 1rem;
+}
+
+.process-workflow .thumb {
+  width: 4.5rem;
+  height: 4.5rem;
+  background-position: -950px -320px; /* Change these to shift the "slice" *
+  background-repeat: no-repeat;
+  background-size: auto; /* or cover/contain depending on need *
+  background-color: #ccc; /* fallback color *
+  cursor: pointer;
+}
+
+.process-description {
+  flex: 1 1 60%;
+}
+
+/***** Developer Handoff *****/
+
+.dev-handoff {
+  /*background-image: url("../assets/visual-designer/process/dev-review-annotation.png");
+  background-position: -600px -320px; /* Change these to shift the "slice" */
+  background-repeat: no-repeat;*/
+  box-sizing: border-box;
+  padding: 1.5rem;
+  background-color: #f0f0f0;
+}
+
+.dev-handoff h3 {
+  margin-bottom: 0.5rem;
+}
+
+.dev-handoff .dev-content {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.dev-handoff ul {
+  padding-left: 1.5rem;
+  margin: 0;
+}
+
+.dev-handoff ul li {
+  padding-left: 0.25rem;
+}
+
+.dev-handoff {
+  display: grid;
+  grid-template-columns: 1fr 2fr 2fr;
+  gap: 1.5rem;
+}
+
+.dev-handoff .thumb {
+  width: 18.75rem;
+  height: 9.375rem;
+  background-position: -750px -275px; /* Change these to shift the "slice" */
+  background-repeat: no-repeat;
+  background-size: auto; /* or cover/contain depending on need */
+  background-color: #ccc; /* fallback color */
+  cursor: pointer;
+}
+
+
+/******** Buttons ********/
+
+button {
+  font-family: 'Quicksand', sans-serif;
+  background: #555;
+  color: #fff;
+  border: none;
+  padding: 0.6rem 2.5rem;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #fff;
+}
+
+a.back {
+  font-family: 'Quicksand', sans-serif;
+  background: #555;
+  color: #fff;
+  border: none;
+  padding: 0.6rem 2.5rem;
+  font-size: 0.8rem;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+a {
+  color: #000;
+}
+
+a:hover {
+  color: #ca005a;
+}
+
+a.back:hover {
+  background: #fff;
+  font-weight: 400;
+
+}
+
+
+
+/******** Footer ********/
+footer {
+  background: #f0f0f0;
+  text-align: center;
+  padding: 1rem 5%;
+  font-size: 0.85rem;
+  color: #666;
+}
+
+/******** Responsive ********/
+
+  .inquiry-form form {
+    flex-direction: column;
+  }
+
+  header {
+    flex-direction: column;
+  }
+
+  #contact-card {
+    width: 100%;
+    margin-top: 1rem;
+  }
+
+
+
+/* ------------------------------------
+   Media Queries
+-------------------------------------*/
+
+/* Small devices (portrait phones, less than 576px) */
+@media (max-width: 575.98px) {
+  /* Styles for phones lines 236 (summary) + 254 (headshot) */
+.summary {
+    padding: 5% 5% 5% 5% !important;
+    margin-left: 0 !important;
+    margin-right: 1rem !important;
+    text-align: left !important;
+    }
+
+.headshot {
+    float: left !important;
+    width: 55% !important;
+    margin: 0 1.5rem 0 0 !important;
+    display:block !important;
+    }
+
+.project-description h3:first-child {
+  padding: 1.5rem 0 0 0;
+}
+
+.project-description p > img:first-child, .project-description p:nth-child(n+1) {
+  display: none;
+  }
+
+.project-description .app-gallery img.app {
+    width: 150px;
+    float: left;
+    margin-right: 20px;
+    margin-left: 0;
+  }
+
+  .dev-handoff {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+  }
+  .dev-handoff img:first-child {
+    width: 100%;
+  }
+}
+
+/* Medium devices (landscape phones to small tablets, 576px to 767.98px) */
+@media (min-width: 576px) and (max-width: 767.98px) {
+  /* Styles for larger phones and small tablets */
+.headshot {
+    float: left;
+    width: 25%;
+    margin: 0 1.5rem 0 0 !important;
+    display:block !important;
+  }
+}
+
+/* Tablets (768px to 991.98px) */
+@media (min-width: 768px) and (max-width: 991.98px) {
+  /* Styles for tablets */
+.headshot {
+    width: 25% !important;
+  }
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+  /* Styles for desktops and up */
+}
+
+

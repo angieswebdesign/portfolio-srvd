@@ -1,0 +1,74 @@
+/* --------------------------------------
+   Animated Logo Scroll
+   -------------------------------------- */
+.client-logos {
+  margin: 0 auto;
+  padding: var(--padding);
+}
+
+.logo-scroll-wrapper {
+  overflow: hidden;
+  width: 100%;
+  position: relative;
+}
+
+.logo-grid {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  display: flex;
+  gap: 1.5rem;
+  /*animation: scroll-left 60s linear infinite;*/
+  align-items: center;
+  flex-direction:row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.logo-grid img {
+  max-height: 60px;
+  object-fit: contain;
+  flex: 0 1 100px;
+  filter: grayscale(100%)
+    brightness(0)
+    invert(30%)
+    sepia(5%)
+    saturate(20%);
+  opacity: 0.6;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+.logo-grid img.descale {
+  max-height: 30px;
+}
+.logo-grid img.upscale {
+  max-height: 90px;
+}
+.logo-grid img:hover {
+  transform: translateY(-5px) scale(1.03);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+}
+
+
+@keyframes scroll-left {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+/* ------------------------------------
+   Device Breakpoint Styles
+-------------------------------------*/
+
+/* Animation only below 1024px (tablet & mobile) */
+@media (max-width: 1024px) {
+  body {
+    padding: 0;
+  }
+  .logo-grid {
+    flex-wrap: nowrap;
+    gap: 1.5rem;
+    animation: scroll-left 45s linear infinite;
+  }
+}
