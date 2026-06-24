@@ -29,7 +29,7 @@ const VIEWPORTS = {
   },
   desktop: {
     width: 900,
-    height: 450
+    height: 420
   }
 };
 

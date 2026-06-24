@@ -42,6 +42,11 @@
 <body>
   <div id="frame" class="frame" aria-hidden="true"></div>
 
+  <div class="orientation-lock">
+    <div class="orientation-lock__content">
+    <p>Rotate your device</p>
+    </div>
+  </div>
 
   <!-- Layer 2: Project Overlay -->
   <div id="modal-root" class="modal-overlay"></div>
@@ -71,8 +76,7 @@
 
         <section class="section" data-section="projects">
           <div class="container">
-            <div class="section-content">
-              <header class="layout-section-header">
+            <header class="layout-section-header">
                 <h2 class="section-heading heading--display">
                   <span class="heading-main">Work</span>
                 </h2>
@@ -85,6 +89,8 @@
                 </div>
                 <!-- end Toggle Switch -->
               </header>
+            <div class="section-content">
+              
               <div class="projects-wrapper">
 
                 <!--Toggle container 1 of 2: Project List -->
@@ -93,29 +99,31 @@
                 </div>
                 <!-- Toggle container 2 of 2: Plot Chart -->
                 <div class="toggle-wrapper" data-visible="false">
-                  <div class="chart-container section-inner">
-                      <div class="y-axis-labels">
-                          <span>5</span>
-                          <span>4</span>
-                          <span>3</span>
-                          <span>2</span>
-                          <span>1</span>
+                  <div>
+                    <div class="chart-container section-inner">
+                        <div class="y-axis-labels">
+                            <span>5</span>
+                            <span>4</span>
+                            <span>3</span>
+                            <span>2</span>
+                            <span>1</span>
+                        </div>
+                        <div id="chart" role="img" aria-labelledby="chart-title chart-desc"></div>
+                        <div class="x-axis-label">Year</div>
+                    </div>
+                    <div class="plot-bottom">
+                      <aside class="chart-legend" aria-labelledby="chart-legend-title">
+                        <h3 id="chart-legend-title" class="visually-hidden">Chart legend</h3>
+                        <dl>
+                          <dt data-icon="→">Year</dt>
+                          <dt data-icon="↑">Complexity</dt>
+                          <dt data-icon="↔">Deliverables</dt>
+                        </dl>
+                      </aside>
+                      <div>
+                        <h2 id="chart-title">
+                          Design work timeline</h2>
                       </div>
-                      <div id="chart" role="img" aria-labelledby="chart-title chart-desc"></div>
-                      <div class="x-axis-label">Year</div>
-                  </div>
-                  <div class="plot-bottom">
-                    <aside class="chart-legend" aria-labelledby="chart-legend-title">
-                      <h3 id="chart-legend-title" class="visually-hidden">Chart legend</h3>
-                      <dl>
-                        <dt data-icon="→">Year</dt>
-                        <dt data-icon="↑">Complexity</dt>
-                        <dt data-icon="↔">Deliverables</dt>
-                      </dl>
-                    </aside>
-                    <div>
-                      <h2 id="chart-title">
-                        Design work timeline</h2>
                     </div>
                   </div>
                 </div>
