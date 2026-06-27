@@ -43,7 +43,7 @@ body {
 }
 
 .intro-description {
-  font-size: var(--type-body-lg);
+  font-size: var(--type-lg);
   font-weight: 200;
 }
 

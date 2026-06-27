@@ -63,6 +63,22 @@ h1 {
  }
 
 /* ========================= */
+/* Stage Pattern */
+/* ========================= */
+
+.section.stage { 
+  
+ }
+
+.section.stage--scroll { 
+
+ }
+
+.section.stage--scroll .section-content {
+    overflow-y: auto;
+}
+
+/* ========================= */
 /* Heading Pattern Page Override */
 /* ========================= */
 
@@ -89,7 +105,7 @@ h1 {
 }*/
 
 .tagline {
-  font-size: var(--type-body-lg);
+  font-size: var(--type-lg);
   font-weight: 200;
 }
 

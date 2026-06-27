@@ -1,0 +1,65 @@
+I want to go with these new tokens.  
+
+
+
+:root {
+
+  /* Gallery architecture */
+
+  --frame-border: 20px;
+
+  --matte-padding: x;
+
+  --content-width: x;
+
+
+
+  /* Responsive */
+
+  --frame-border-mobile: 12px;
+
+  --matte-padding-mobile: x;
+
+}
+
+
+
+But I still need to resolve tokens.css from two files.  The one with the comment /* Directory: /portfolio-srvd/ */ is the source of truth.  The other "clean" version is the one that has to be evaluated about what to bring over.  So far, we have aligned to bring over the Type Scale section, with a few changes: 
+
+
+
+--type-sm
+
+--type-md (or --type-md)
+
+--type-lg
+
+--type-xl
+
+--type-xl (can be renamed to --type-xl)
+
+
+
+No longer needed:
+
+--type-hero: 93px;
+
+--type-hero-accent: 80px;
+
+
+
+Needs discussion
+
+--type-callout: 58px; (
+
+
+
+From case-study.css: These can be moved to components.css
+
+----------------
+
+  --cs-img-ratio: 4 / 3;
+
+  --cs-img-thumb-w: 200px;
+
+  --cs-img-thumb-h: 150px;

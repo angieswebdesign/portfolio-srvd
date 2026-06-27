@@ -52,7 +52,7 @@ body {
   background: transparent;      
   padding: var(--frame-pad);     /* fixed 20px frame */
   font-family: var(--font-sans);
-  color: var(--text);
+  color: var(--theme-text);
   box-sizing: border-box;
   font-size: 16px;
   font-weight: 400;
@@ -82,7 +82,7 @@ img, svg { max-width: 100%; height: auto; display: block; }
 
 /* The website lives inside the frame */
 .site {
-  background: var(--surface);
+  background: var(--theme-surface);
   padding: 0 var(--gap-4);
 }
 
@@ -263,11 +263,11 @@ img, svg { max-width: 100%; height: auto; display: block; }
 /* Scale Modifiers */
 
 .heading--display .heading-main {
-  font-size: var(--type-display);
+  font-size: var(--type-xl);
 }
 
 .heading--display .heading-accent {
-  font-size: calc(var(--type-display) * 0.85);
+  font-size: calc(var(--type-xl) * 0.85);
   margin-top: -8px;
 }
 
@@ -481,10 +481,10 @@ article.project-card img {
   /* Mobile Behavior for System Headings (Proportional scale) */
   :root {
     --frame-pad: 12px;
-    --type-display: 42px;
+    --type-xl: 42px;
     --type-h1: 36px;
     --type-h2: 28px;
-    --type-body-lg: 20px;
+    --type-lg: 20px;
   }
 
   /* The website lives inside the frame */
