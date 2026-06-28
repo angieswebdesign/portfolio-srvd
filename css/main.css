@@ -1,32 +1,3 @@
-/* =========================
-   TOKENS
-========================= */
-:root {
-
-  /* Stage Definitions */
-  --header-height: 125px;        /* AWD sticky header height */
-  --frame-thickness: calc(var(--frame-pad) * 2); 
-  --stage-height: calc(
-    100svh
-    - var(--header-height)
-    - var(--frame-thickness)
-  );
-
-    /* Overlay */
-  --overlay-bg: rgba(42, 41, 41, 0.8);
-  --overlay-triangle-bg: rgba(0, 0, 0, 0.35);
-  --overlay-pad: 20px;
-  --overlay-col2-min: 450px;
-
-  /* Overlay animation */
-  --overlay-triangle-enter-duration: 140ms;
-  --overlay-triangle-enter-ease: cubic-bezier(0.2, 0.8, 0.2, 1);
-  --overlay-panel-enter-delay: 140ms;
-  --overlay-panel-enter-duration: 180ms;
-}
-
- 
-
 
 /* =========================
    BASE
@@ -121,7 +92,9 @@ img, svg { max-width: 100%; height: auto; display: block; }
   padding-bottom: 30px;
 }
 
-
+.layout-section-body {
+  max-height: 500px;
+}
 
 
 /* =========================
@@ -184,114 +157,6 @@ img, svg { max-width: 100%; height: auto; display: block; }
 }
 
 /* =========================
-   HEADING PATTERN
-========================= */
-
-/* Section heading wrapper */
-
-/* initial heading pattern created 3/6/26
-.section-heading {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-}
-
-
-.heading-main {
-  font-family: var(--font-sans);
-  font-weight: 900;
-  line-height: var(--lh-tight);
-  letter-spacing: var(--ls-tight);
-  text-transform: uppercase;
-  color: var(--color-primary);
-}
-
-.heading-accent {
-  font-family: var(--font-serif-text);
-  font-style: italic;
-  font-weight: 400;
-  letter-spacing: var(--ls-script);
-  color: #ff4f87;
-  margin-top: -16px;
-}
-  */
-
-/* updated heading component 3/8/26 */
-
-.section-heading {
-  margin: 0;
-  line-height: var(--lh-tight);
-  display: flex;
-  flex-direction: column;
-}
-
-.heading-main {
-  display: block;
-  font-family: var(--font-sans);
-  font-weight: 900;
-  letter-spacing: var(--ls-tight);
-  text-transform: uppercase;
-  color: var(--color-text);
-  font-size: var(--heading-main-size);
-}
-
-.heading-accent {
-  display: block;
-  font-family: var(--font-serif);
-  font-style: italic;
-  font-weight: 400;
-  color: var(--color-accent);
-  letter-spacing: var(--ls-script);
-  font-size: var(--heading-accent-size);
-}
-
-.subtitle {
-  text-align: center;
-  text-transform: uppercase;
-  font-size: 1.375rem;
-}
-
-  .overlay-panel {
-    --heading-main-size: 2rem;
-    --heading-accent-size: 1.875rem;
-  }
-
-  .overlay-panel .heading-accent {
-    margin-top: -7px;
-  }
-
-/* Scale Modifiers */
-
-.heading--display .heading-main {
-  font-size: var(--type-xl);
-}
-
-.heading--display .heading-accent {
-  font-size: calc(var(--type-xl) * 0.85);
-  margin-top: -8px;
-}
-
-.heading--h1 .heading-main {
-  font-size: var(--type-h1);
-}
-
-.heading--h1 .heading-accent {
-  font-size: calc(var(--type-h1) * 0.85);
-  margin-top: -12px;
-}
-
-.heading--h2 .heading-main {
-  font-size: var(--type-h2);
-}
-
-.heading--h2 .heading-accent {
-  font-size: calc(var(--type-h2) * 0.85);
-  margin-top: -8px;
-}
-
-
-
-/* =========================
    WORK SECTION
 ========================= */
 .projects-wrapper {
@@ -299,7 +164,6 @@ img, svg { max-width: 100%; height: auto; display: block; }
 }
 
 #project-list {
-  height: 500px;
   overflow: scroll;
 }
 
@@ -451,13 +315,13 @@ article.project-card img {
 }
 
 @media (max-width: 1180px) {
-  /* tablet styles */
+  /* tablet styles 
   #project-list {
   height: 450px;
   }
   #chart svg {
     width: 700px;
-  }
+  }*/
 }
 
 @media (min-width: 769px) {
@@ -478,14 +342,6 @@ article.project-card img {
 }
 
 @media (max-width: 768px) {
-  /* Mobile Behavior for System Headings (Proportional scale) */
-  :root {
-    --frame-pad: 12px;
-    --type-xl: 42px;
-    --type-h1: 36px;
-    --type-h2: 28px;
-    --type-lg: 20px;
-  }
 
   /* The website lives inside the frame */
   .site {

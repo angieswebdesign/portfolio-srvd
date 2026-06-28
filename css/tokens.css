@@ -1,4 +1,5 @@
-/* Directory: /portfolio-srvd/ */
+/* Adding color themes: Look at https://angieswebdesign.github.io/shared/css/global-tokens.css (working examples) of multiple color themes */
+
 :root {
   
 /* =========================
@@ -34,6 +35,18 @@
   --bp-stack: 480px;
 
 /* =========================
+   STAGE DEFENITIONS
+========================= */
+
+  --header-height: 125px;        /* AWD sticky header height */
+  --frame-thickness: calc(var(--frame-pad) * 2); 
+  --stage-height: calc(
+    100svh
+    - var(--header-height)
+    - var(--frame-thickness)
+  );
+
+/* =========================
    LAYOUT
 ========================= */
   --frame-pad: 20px;
@@ -48,6 +61,37 @@
 
   --header-min: 64px;
 
+/* =========================
+   OVERLAY
+========================= */
+  /* Overlay */
+  --overlay-bg: rgba(42, 41, 41, 0.8);
+  --overlay-triangle-bg: rgba(0, 0, 0, 0.35);
+  --overlay-pad: 20px;
+  --overlay-col2-min: 450px;
+
+  /* Overlay animation */
+  --overlay-triangle-enter-duration: 140ms;
+  --overlay-triangle-enter-ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --overlay-panel-enter-delay: 140ms;
+  --overlay-panel-enter-duration: 180ms;
+
+
 }
 
-/* Adding color themes: Look at /Development/shared/css/global-tokens.css (working examples) of multiple color themes */
+
+
+/* =========================
+   RESPONSIVE TOKENS
+========================= */
+
+@media (max-width: 768px) {
+  /* Mobile Behavior for System Headings (Proportional scale) */
+  :root {
+    --frame-pad: 12px;
+    --type-xl: 42px;
+    --type-h1: 36px;
+    --type-h2: 28px;
+    --type-lg: 20px;
+  }
+}

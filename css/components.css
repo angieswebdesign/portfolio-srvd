@@ -7,12 +7,6 @@
 
 body {
   margin: 40px;
-  padding: var(--frame-pad);     /* fixed 20px frame */
-  font-family: var(--font-sans);
-  color: var(--color-text);
-  box-sizing: border-box;
-  font-size: 16px;
-  font-weight: 400;
 }
 
 hr {
@@ -76,37 +70,6 @@ h1 {
 
 .section.stage--scroll .section-content {
     overflow-y: auto;
-}
-
-/* ========================= */
-/* Heading Pattern Page Override */
-/* ========================= */
-
-/*
-  .project-card .section-heading, 
-  .layer-3 .section-heading {
-    flex-direction: row;
-  }
-    */
-
-  .project-card {
-    --heading-main-size: 1.75rem;
-    --heading-accent-size: 1.6875rem;
-  }
-
-/* Tagline *
-
-.tagline {
-  font-family: var(--font-sans);
-  font-size: 1.5rem;
-  font-optical-sizing: auto;
-  font-weight: 300;
-  line-height: 1.3;
-}*/
-
-.tagline {
-  font-size: var(--type-lg);
-  font-weight: 200;
 }
 
 /* =========================
@@ -256,7 +219,7 @@ a.is-active {
   align-items: center;
   justify-content: space-between;
   flex-direction:row;
-  padding: 30px;
+  padding: var(--gap-3);
   gap: 10px;
 }
 
@@ -306,6 +269,95 @@ a.is-active {
 }
 
 /* =========================
+   HEADING PATTERN
+========================= */
+
+/* Heading Pattern wrapper */
+.section-heading {
+  margin: 0;
+  line-height: var(--lh-tight);
+  display: flex;
+  flex-direction: column;
+}
+
+/* ------------------
+  Heading Pattern Set 
+    main = all caps, primary text color
+    accent = lower case, accent color, italic 
+  -------------------- */
+.heading-main {
+  display: block;
+  font-family: var(--font-sans);
+  font-weight: 900;
+  letter-spacing: var(--ls-tight);
+  text-transform: uppercase;
+  color: var(--color-text);
+  font-size: var(--heading-main-size);
+}
+.heading-accent {
+  display: block;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  color: var(--color-accent);
+  letter-spacing: var(--ls-script);
+  font-size: var(--heading-accent-size);
+}
+
+/* Used in case studies or centered long content titles */
+.subtitle {
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 1.375rem;
+}
+
+/* Heading pattern that displays in the chart overlay panel when a node is clicked */
+  .overlay-panel {
+    --heading-main-size: 2rem;
+    --heading-accent-size: 1.875rem;
+  }
+  .overlay-panel .heading-accent {
+    margin-top: -7px;
+  }
+
+  /* Heading pattern override for project card that displays in the Work list view */
+  .project-card {
+    --heading-main-size: 1.75rem;
+    --heading-accent-size: 1.6875rem;
+  }
+
+/* ------------------------------
+  Heading Pattern Scale Modifiers 
+  ------------------------------- */
+
+/* Modifier set 1 */
+.heading--display .heading-main {
+  font-size: var(--type-xl);
+}
+.heading--display .heading-accent {
+  font-size: calc(var(--type-xl) * 0.85);
+  margin-top: -8px;
+}
+
+/* Modifier set 2 */
+.heading--h1 .heading-main {
+  font-size: var(--type-h1);
+}
+.heading--h1 .heading-accent {
+  font-size: calc(var(--type-h1) * 0.85);
+  margin-top: -12px;
+}
+
+/* Modifier set 3 */
+.heading--h2 .heading-main {
+  font-size: var(--type-h2);
+}
+.heading--h2 .heading-accent {
+  font-size: calc(var(--type-h2) * 0.85);
+  margin-top: -8px;
+}
+
+/* =========================
    CONTENT
 ========================= */
 
@@ -348,5 +400,20 @@ a.is-active {
   font-weight: 700;
 }
 
+/* ========================= */
+/* TAGLINE */
+/* ========================= */
 
+.tagline {
+  font-family: var(--font-sans);
+  font-size: 1.5rem;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  line-height: 1.3;
+}*/
+
+.tagline {
+  font-size: var(--type-lg);
+  font-weight: 200;
+}
 
