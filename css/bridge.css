@@ -14,10 +14,6 @@ html {
   scroll-behavior: smooth;
 }
 
-:root {
-    --color-accent: #F495B0;
-}
-
 body {
     font-family: var(--font-sans);
 }
@@ -73,22 +69,43 @@ a:hover {
 .hero-message {
     position: relative;
     z-index: 10;
+    align-self: end;
 }
 
-a.hero-link {
+/* ------------------------------------------------------------------
+   Hero display link
+
+   Display-only flex layout used to vertically center the hero label
+   with the enlarged shared arrow icon.
+------------------------------------------------------------------ */
+
+#gap .hero-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 0.15em;
+
     margin: 0;
-    display: block;
 
     font-family: var(--font-sans);
     font-weight: 900;
     font-size: clamp(4rem, 7vw, 8rem);
-    line-height: 0.9;
+    line-height: 1;
     letter-spacing: -0.02em;
 
     text-transform: uppercase;
-    text-align: right;
+    /*color: var(--color-text);*/
+}
 
-    color: var(--color-text);
+#gap .hero-link__label {
+    display: block;
+}
+
+#gap .hero-link .icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: none;
 }
 
 a.hero-link:hover {
@@ -167,9 +184,31 @@ a.hero-link:hover {
     will-change: transform, opacity;
 }
 
+/* ------------------------------------------------------------------
+   Display-only hero .icon arrow styles
+
+   The shared arrow icon is designed for standard 24×24 UI usage.
+   At the enlarged hero sizes (~120px), the built-in viewBox padding
+   becomes visually prominent. This scoped override increases the
+   perceived icon size without affecting the shared icon system.
+------------------------------------------------------------------ */
+
 a.hero-link .icon {
-    width: 115px;
-    height: 115px;
+    width: 96px;
+    height: 96px;
+}
+
+#gap a.hero-link .icon {
+    width: 120px;
+    height: 120px;
+}
+
+/* Hero display exception:
+   Increase the perceived size of the shared arrow to reduce
+   visible viewBox padding at large display sizes only. */
+#gap .hero-link .icon svg {
+    width: 115%;
+    height: 115%;
 }
 
 a.hero-link svg {

@@ -1,0 +1,19 @@
+TODO — Map JavaScript Colors to Design Tokens
+
+Status: Deferred architectural improvement
+
+The bridge animation currently uses hard-coded RGB values for frame color states (default, accent, muted). CSS already manages these colors through design tokens, but JavaScript has not yet been connected to them.
+
+Future implementation
+
+Create frame color tokens in tokens.css:
+--color-frame-default
+--color-frame-accent
+--color-frame-muted
+Build a small JavaScript token bridge that reads CSS custom properties via getComputedStyle().
+Convert token values to RGB once during initialization.
+Replace all hard-coded RGB values in the bridge animation with token-derived values.
+Preserve the current state model (default, accent, muted) so theme changes require CSS updates only.
+
+Reason for deferring
+The current implementation is stable. This change improves maintainability and future theme support without affecting current functionality, so it can be completed after the bridge experience is finalized.

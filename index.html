@@ -137,7 +137,8 @@
         </div>
 
         <div id="gap" class="hero-message">
-            <a class="hero-link" href="work.html">I BRIDGE THE GAP 
+            <a class="hero-link" href="work.html">
+                <span class="hero-link__label">I BRIDGE THE GAP</span>
                 <span
                     class="icon rotate-90"
                     data-icon="arrow"
@@ -164,18 +165,37 @@
 
     <!--<script type="module" src="/./js/main.js"></script> enable when moving all inline and external js to one file-->
     <script>
-        const heroLink = document.querySelector(".hero-message .hero-link");
+    const heroLink = document.querySelector(".hero-message .hero-link");
+    const heroLabel = heroLink?.querySelector(".hero-link__label");
+    const mobile = window.matchMedia("(max-width: 767px)");
 
-        if (heroLink) {
-            heroLink.addEventListener("mouseenter", () => {
-                heroLink.innerHTML = "VIEW WORK →";
-            });
+    if (heroLink && heroLabel) {
 
-            heroLink.addEventListener("mouseleave", () => {
-                heroLink.innerHTML = "I BRIDGE THE GAP →";
-            });
+        function updateHeroLabel(e) {
+            heroLabel.textContent = e.matches
+                ? "VIEW WORK"
+                : "I BRIDGE THE GAP";
         }
 
-    </script>
+        // Initial state
+        updateHeroLabel(mobile);
+
+        // Update on viewport resize/orientation change
+        mobile.addEventListener("change", updateHeroLabel);
+
+        // Desktop hover only
+        heroLink.addEventListener("mouseenter", () => {
+            if (!mobile.matches) {
+                heroLabel.textContent = "VIEW WORK";
+            }
+        });
+
+        heroLink.addEventListener("mouseleave", () => {
+            if (!mobile.matches) {
+                heroLabel.textContent = "I BRIDGE THE GAP";
+            }
+        });
+    }
+</script>
 </body>
 </html>

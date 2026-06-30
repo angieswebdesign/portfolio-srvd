@@ -1,5 +1,6 @@
 (() => {
   const phrases = Array.from(document.querySelectorAll(".phrase-field span"));
+  const gapInteractionTarget = document.getElementById("gap");
 
   if (!phrases.length) {
     return;
@@ -19,6 +20,7 @@
 
   const state = {
     ambientTimer: null,
+    ambientDisabled: false,
     ambientPaused: false,
     clickLocked: false,
     ambientTargetCount: randomInt(TIMING.ambientActiveCount),
@@ -88,6 +90,14 @@
     state.activeAnimations.delete(phrase);
   }
 
+  function fadeOutPhrase(phrase) {
+    clearPhraseAnimation(phrase);
+    phrase.style.transitionDuration = durationPair(
+      getPhraseTiming(phrase).fadeOutMs
+    );
+    phrase.classList.remove("is-active");
+  }
+
   function activatePhrase(phrase, options = {}) {
     const timing = getPhraseTiming(phrase);
     const fadeInMs = options.fadeInMs ?? timing.fadeInMs;
@@ -137,11 +147,13 @@
         return;
       }
 
-      clearPhraseAnimation(phrase);
-      phrase.style.transitionDuration = durationPair(
-        getPhraseTiming(phrase).fadeOutMs
-      );
-      phrase.classList.remove("is-active");
+      fadeOutPhrase(phrase);
+    });
+  }
+
+  function clearAmbientPhrases() {
+    Array.from(state.activeAmbientPhrases).forEach((phrase) => {
+      fadeOutPhrase(phrase);
     });
   }
 
@@ -194,7 +206,7 @@
   function scheduleAmbientPulse(delayMs = randomInt(TIMING.ambientIntervalMs)) {
     window.clearTimeout(state.ambientTimer);
 
-    if (state.ambientPaused || state.clickLocked) {
+    if (state.ambientDisabled || state.ambientPaused || state.clickLocked) {
       state.ambientTimer = null;
       return;
     }
@@ -207,7 +219,7 @@
 
     state.ambientTimer = null;
 
-    if (state.ambientPaused || state.clickLocked) {
+    if (state.ambientDisabled || state.ambientPaused || state.clickLocked) {
       return;
     }
 
@@ -235,7 +247,48 @@
   function resumeAmbient() {
     state.clickLocked = false;
     state.ambientPaused = false;
+
+    if (state.ambientDisabled) {
+      return;
+    }
+
     scheduleAmbientPulse();
+  }
+
+  function removeGapInteractionListeners() {
+    if (!gapInteractionTarget) {
+      return;
+    }
+
+    gapInteractionTarget.removeEventListener(
+      "pointerenter",
+      disableAmbientPermanently
+    );
+    gapInteractionTarget.removeEventListener(
+      "mouseenter",
+      disableAmbientPermanently
+    );
+    gapInteractionTarget.removeEventListener(
+      "focusin",
+      disableAmbientPermanently
+    );
+    gapInteractionTarget.removeEventListener(
+      "touchstart",
+      disableAmbientPermanently
+    );
+  }
+
+  function disableAmbientPermanently() {
+    if (state.ambientDisabled) {
+      return;
+    }
+
+    state.ambientDisabled = true;
+    state.ambientPaused = false;
+    window.clearTimeout(state.ambientTimer);
+    state.ambientTimer = null;
+    clearAmbientPhrases();
+    removeGapInteractionListeners();
   }
 
   function clearHoverTimer(phrase) {
@@ -301,7 +354,31 @@
     });
   }
 
+  function bindGapInteraction() {
+    if (!gapInteractionTarget) {
+      return;
+    }
+
+    gapInteractionTarget.addEventListener(
+      "pointerenter",
+      disableAmbientPermanently
+    );
+    gapInteractionTarget.addEventListener(
+      "mouseenter",
+      disableAmbientPermanently
+    );
+    gapInteractionTarget.addEventListener("focusin", disableAmbientPermanently);
+    gapInteractionTarget.addEventListener(
+      "touchstart",
+      disableAmbientPermanently,
+      {
+        passive: true
+      }
+    );
+  }
+
   initializePhraseTiming();
   bindPhraseInteractions();
+  bindGapInteraction();
   scheduleAmbientPulse(TIMING.initialAmbientDelayMs);
 })();

@@ -81,7 +81,7 @@ h1 {
       left: 0;
 
       box-sizing: border-box;
-      border: var(--frame-pad) solid var(--color-accent);
+      border: var(--frame-pad) solid var(--color-frame-default);
       background: transparent;
 
       pointer-events: none;
