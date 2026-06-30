@@ -167,6 +167,15 @@ a.hero-link:hover {
     will-change: transform, opacity;
 }
 
+a.hero-link .icon {
+    width: 115px;
+    height: 115px;
+}
+
+a.hero-link svg {
+    stroke-width: 3px;
+}
+
 .scroll-cue.is-visible a.hero-link {
     pointer-events: auto;
 }
